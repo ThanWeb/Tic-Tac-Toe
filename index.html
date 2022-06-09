@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TIC-TAC-TOE</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="pre-game">
+            <div>
+                <p>Player 1 : O</p>
+                <p>Player 2 : X</p>
+                <button id="start">Start The Game</button>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Here's The Board!</h1>
+            <div class="board">
+                <div class="top side">
+                    <div class="box closed left">1</div>
+                    <div class="box closed">2</div>
+                    <div class="box closed right">3</div>
+                </div>
+                <div class="mid side">
+                    <div class="box closed left">4</div>
+                    <div class="box closed">5</div>
+                    <div class="box closed right">6</div>
+                </div>
+                <div class="low side">
+                    <div class="box closed left">7</div>
+                    <div class="box closed">8</div>
+                    <div class="box closed right">9</div>
+                </div>
+            </div>
+            <div class="result">
+                <p class="message congratulationsStatement">. . .</p><br>
+                <button id="restart">Clear The Board</button>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
+</html>
