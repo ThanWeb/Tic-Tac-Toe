@@ -1,5 +1,3 @@
-// Yang belum selesai:
-
 window.addEventListener("load", function(){
     const sessionStorageKey = "PLAYERS_TURN";
     const preGameDiv = document.querySelector(".pre-game");
