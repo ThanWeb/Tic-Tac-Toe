@@ -16,7 +16,6 @@
 
 html, body {
     height: 100vh;
-    margin: 0;
 }
 
 body {
@@ -46,7 +45,6 @@ button {
     display: flex;
     z-index: 1;
     background-color: var(--darkblue);
-    opacity: 0.5em;
 }
 
 .pre-game, .container{
@@ -186,6 +184,6 @@ div.right {
 
 @media only screen and (min-width: 1200px) {
     body {
-        font-size: 1.5vw;
+        font-size: 2vw;
     }
 }
