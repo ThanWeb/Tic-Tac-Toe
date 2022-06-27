@@ -1,6 +1,8 @@
+const preGameDiv = document.querySelector(".pre-game");
+const container = document.querySelector(".container");
+
 window.addEventListener("load", function(){
     const sessionStorageKey = "PLAYERS_TURN";
-    const preGameDiv = document.querySelector(".pre-game");
     sessionStorage.removeItem(sessionStorageKey);
     preGameDiv.classList.remove("hidden");
     console.clear();
@@ -15,7 +17,8 @@ let index = 0;
 let gameOver = 0;
 
 startButton.addEventListener("click", function(){
-    document.querySelector(".pre-game").classList.add("hidden");
+    preGameDiv.classList.add("hidden");
+   container.classList.remove("hidden");
 });
 
 for(let i = 0; i < boxes.length; i++){
