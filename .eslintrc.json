@@ -23,6 +23,7 @@
         "@typescript-eslint/indent": ["error", 4],
         "react/react-in-jsx-scope": 0,
         "react/jsx-uses-react": 0,
-        "@typescript-eslint/triple-slash-reference": 0
+        "@typescript-eslint/triple-slash-reference": 0,
+        "jsx-quotes": ["error", "prefer-single"]
     }
 }
