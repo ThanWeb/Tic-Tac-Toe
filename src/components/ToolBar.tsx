@@ -17,7 +17,7 @@ const ToolBar = ({ isGameStarted, values, startTheGame, history, isHistoryShowed
                 <TbArrowForwardUp className='w-8 h-8 mx-auto' />
                 <span>Reset</span>
             </button>
-            <button disabled={isGameStarted} onClick={() => { startTheGame() }} className={`${isGameStarted ? 'opacity-0' : 'opacity-100 border'} main-btn border-orange rounded-lg px-4 py-2 transition-fast w-fit md:w-2/4 lg:w-2/12`}>
+            <button disabled={isGameStarted} onClick={() => { startTheGame() }} className={`${isGameStarted ? 'opacity-0' : 'opacity-100 border'} main-btn border-orange rounded-lg px-4 py-2 transition-fast w-fit px-10 md:px-0 md:w-2/4 lg:w-2/12`}>
                 {
                     history.length > 0 ? 'Again?' : 'Start!'
                 }
