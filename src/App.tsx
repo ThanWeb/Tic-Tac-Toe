@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 import Board from './components/Board'
 import ToolBar from './components/ToolBar'
+import History from './components/History'
 
 const App = (): ReactElement => {
     const [isGameStarted, setIsGameStarted] = useState<boolean>(false)
+    const [isHistoryShowed, setIsHistoryShowed] = useState<boolean>(false)
     const [firstPlayerTurn, setFirstPlayerTurn] = useState<boolean>(true)
     const [values, setValues] = useState<number[] | any>([0, 0, 0, 0, 0, 0, 0, 0, 0])
     const [history, setHistory] = useState<string[]>([])
@@ -24,13 +26,11 @@ const App = (): ReactElement => {
 
     const startTheGame = (): void => {
         setIsGameStarted(true)
+        setIsHistoryShowed(false)
         setHeadingText('Player 1\'s turn')
-        if (history.length > 0) {
-            const resetValues = values.map(() => { return 0 })
-            setValues(resetValues)
-            setFirstPlayerTurn(true)
-        }
-
+        const resetValues = values.map(() => { return 0 })
+        setValues(resetValues)
+        setFirstPlayerTurn(true)
         const cells = document.querySelectorAll('.cell')
         cells.forEach(cell => {
             if (cell.classList.contains('highlight')) {
@@ -106,11 +106,16 @@ const App = (): ReactElement => {
         } else {
             result = 'The game ends in a draw'
         }
-
+        setHeadingText(result)
+        const date = new Date()
+        result += `\n${date.toDateString()}, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
         const newHistory = history.map((value: string) => { return value })
         newHistory.push(result)
-        setHeadingText(result)
         setHistory(newHistory)
+    }
+
+    const toggleHistory = (): void => {
+        setIsHistoryShowed(!isHistoryShowed)
     }
 
     const getVideoBackgroundHeight = (): void => {
@@ -120,11 +125,15 @@ const App = (): ReactElement => {
 
     return (
         <div className='flex flex-col justify-center bg-dark-blue'>
-            <div className='container flex flex-col height-viewport mx-auto px-12 pt-8 pb-16 lg:py-16'>
-                <h1 className='text-center tracking-wide text-2xl'>{headingText}</h1>
-                <h1 className='mt-4 h-4 text-center tracking-wide text-2xl'>{alertMessage}</h1>
-                <Board values={values} changeValue={changeValue} />
-                <ToolBar isGameStarted={isGameStarted} values={values} startTheGame={startTheGame} history={history} />
+            <div className='container flex flex-col height-viewport mx-auto px-12 py-8 lg:py-16'>
+                {
+                    isHistoryShowed ? <h1 className='text-center tracking-wide text-2xl'>History</h1> : <h1 className='text-center tracking-wide text-2xl'>{headingText}</h1>
+                }
+                <h1 className='mt-4 h-2 text-center tracking-wide text-1xl'>{alertMessage}</h1>
+                {
+                    isHistoryShowed ? <History history={history} /> : <Board values={values} changeValue={changeValue} />
+                }
+                <ToolBar isGameStarted={isGameStarted} values={values} startTheGame={startTheGame} history={history} isHistoryShowed={isHistoryShowed} toggleHistory={toggleHistory}/>
             </div>
         </div>
     )
