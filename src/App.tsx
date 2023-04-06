@@ -19,9 +19,6 @@ const App = (): ReactElement => {
 
     useEffect(() => {
         checkResult()
-        console.log(values)
-        console.log(history)
-        console.log(firstPlayerTurn)
     }, [values])
 
     const startTheGame = (): void => {
