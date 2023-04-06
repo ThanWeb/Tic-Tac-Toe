@@ -44,8 +44,12 @@ body, button {
     border-color: var(--orange);
 }
 
+.board {
+    box-shadow: 0 0 10px var(--black);
+}
+
 .cell.highlight {
-    background-color: rgba(229, 229, 229, 0.1);
+    background-color: rgba(255, 255, 255, 0.1)
 }
 
 .sign-container {
@@ -60,14 +64,13 @@ body, button {
     height: 100%;
 }
 
-.circle-sign {
+.circle-sign .line {
     border: 2px solid white;
     border-radius: 100%;
 }
 
 .cross-sign .line {
     width: 150%;
-    position: absolute;
     border: 1px solid white;
 }
 
