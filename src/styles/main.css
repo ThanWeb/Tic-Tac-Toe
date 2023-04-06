@@ -82,3 +82,7 @@ body, button {
 .cross-sign .line:nth-child(2) {
     transform: rotate(-45deg);
 }
+
+.main-btn:hover {
+    border-color: var(--white);
+}

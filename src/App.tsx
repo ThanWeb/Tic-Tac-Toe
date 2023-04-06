@@ -125,7 +125,7 @@ const App = (): ReactElement => {
 
     return (
         <div className='flex flex-col justify-center bg-dark-blue'>
-            <div className='container flex flex-col height-viewport mx-auto px-12 py-8 lg:py-16'>
+            <div className='container flex flex-col height-viewport mx-auto px-12 py-8'>
                 {
                     isHistoryShowed ? <h1 className='text-center tracking-wide text-2xl'>History</h1> : <h1 className='text-center tracking-wide text-2xl'>{headingText}</h1>
                 }
