@@ -9,6 +9,7 @@ const App = (): ReactElement => {
     const [values, setValues] = useState<number[] | any>([0, 0, 0, 0, 0, 0, 0, 0, 0])
     const [history, setHistory] = useState<string[]>([])
     const [headingText, setHeadingText] = useState<string>('Let\'s Play!')
+    const [alertMessage, setAlertMessage] = useState<string>('')
 
     useEffect(() => {
         getVideoBackgroundHeight()
@@ -55,6 +56,13 @@ const App = (): ReactElement => {
                 return value
             })
             setValues(newValues)
+        } else if (values[selectedIndex] !== 0 && isGameStarted) {
+            setAlertMessage('Please Choose Another Box')
+            setTimeout(() => {
+                if (alertMessage === '') {
+                    setAlertMessage('')
+                }
+            }, 1500)
         }
     }
 
@@ -93,7 +101,7 @@ const App = (): ReactElement => {
             result = `Player ${firstPlayerTurn ? '2' : '1'} wins the game!`
             const cells = document.querySelectorAll('.cell')
             cellsIndex.forEach((value, index) => {
-                setTimeout(() => { cells[value].classList.add('highlight') }, (1 + index) * 100)
+                setTimeout(() => { cells[value].classList.add('highlight') }, (1 + index) * 150)
             })
         } else {
             result = 'The game ends in a draw'
@@ -112,10 +120,11 @@ const App = (): ReactElement => {
 
     return (
         <div className='flex flex-col justify-center bg-dark-blue'>
-            <div className='container flex flex-col height-viewport px-12 pt-8 pb-16 lg:py-16'>
-                <h1 className='text-center tracking-wide'>{headingText}</h1>
+            <div className='container flex flex-col height-viewport mx-auto px-12 pt-8 pb-16 lg:py-16'>
+                <h1 className='text-center tracking-wide text-2xl'>{headingText}</h1>
+                <h1 className='mt-4 h-4 text-center tracking-wide text-2xl'>{alertMessage}</h1>
                 <Board values={values} changeValue={changeValue} />
-                <ToolBar isGameStarted={isGameStarted} startTheGame={startTheGame} history={history} />
+                <ToolBar isGameStarted={isGameStarted} values={values} startTheGame={startTheGame} history={history} />
             </div>
         </div>
     )
