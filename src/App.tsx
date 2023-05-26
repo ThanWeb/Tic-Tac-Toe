@@ -128,7 +128,7 @@ const App = (): ReactElement => {
                 }
                 <h1 className='mt-4 h-2 text-center tracking-wide text-1xl'>{alertMessage}</h1>
                 {
-                    isHistoryShowed ? <History history={history} /> : <Board values={values} changeValue={changeValue} />
+                    isHistoryShowed ? <History history={history} /> : <Board values={values} changeValue={changeValue} isGameStarted={isGameStarted} setHeadingText={setHeadingText} />
                 }
                 <ToolBar isGameStarted={isGameStarted} values={values} startTheGame={startTheGame} history={history} isHistoryShowed={isHistoryShowed} toggleHistory={toggleHistory}/>
             </div>
